@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
+
 
 void merge(int* arr, int l, int m, int r) {
     int n1 = m - l + 1;
@@ -59,8 +61,11 @@ int main(int argc, char* argv[]) {
         delete[] arr;
     }
 
-    std::cout << "Среднее время последовательной сортировки: "
-              << (double)total / runs / CLOCKS_PER_SEC << " секунд\n";
+
+
+    double avg_time_s = (double)total_time / runs / CLOCKS_PER_SEC;
+    std::cout << "Среднее время последовательной сортировки: " << std::fixed << std::setprecision(8) << avg_time_ms << " с\n";
+
 
     return 0;
 }
