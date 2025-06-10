@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
+
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
@@ -30,7 +32,7 @@ int main(int argc, char* argv[]) {
     }
 
     double avg_time_ms = (double)total_time / runs / CLOCKS_PER_SEC;
-    std::cout << "Среднее время выполнения: " << avg_time_ms << " с\n";
+    std::cout << "Среднее время выполнения: " << std::fixed << std::setprecision(8) << avg_time_ms << " с\n";
 
     return 0;
 }
