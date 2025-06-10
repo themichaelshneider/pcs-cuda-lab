@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < runs; ++i) {
         int* arr = new int[size];
         for (int j = 0; j < size; ++j)
-            arr[j] = rand();
+            arr[j] = rand() % 100;;
 
         clock_t start = clock();
         mergeSort(arr, 0, size - 1);
