@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
     }
 
     double avg_time_ms = (double)total_time / runs / CLOCKS_PER_SEC;
-    std::cout << "Среднее время выполнения: " << avg_time_ms << " мс\n";
+    std::cout << "Среднее время выполнения: " << avg_time_ms << " с\n";
 
     return 0;
 }
