@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <cuda_runtime.h>
+#include <iomanip>
+
 
 __global__ void sum_reduction(int* input, long long* output, int n) {
     extern __shared__ int sdata[];
@@ -70,8 +72,8 @@ int main(int argc, char* argv[]) {
         cudaFree(d_partial_sums);
     }
 
-    double avg_time_ms = (double)total_time / runs / CLOCKS_PER_SEC;
-    std::cout << "Среднее время выполнения: " << avg_time_ms << " с\n";
+    double avg_time_sec = (double)total_time / runs / CLOCKS_PER_SEC;
+    std::cout << "Среднее время выполнения: " << std::fixed << std::setprecision(8) << avg_time_sec << " с\n";
 
     return 0;
 }
