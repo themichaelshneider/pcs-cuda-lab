@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
         cudaFree(d_partial_sums);
     }
 
-    double avg_time_ms = (double)total_time / runs / CLOCKS_PER_SEC * 1000;
+    double avg_time_ms = (double)total_time / runs / CLOCKS_PER_SEC;
     std::cout << "Среднее время выполнения: " << avg_time_ms << " мс\n";
 
     return 0;
