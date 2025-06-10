@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
         delete[] arr;
     }
 
-    double avg_time_ms = (double)total_time / runs / CLOCKS_PER_SEC;
+    double avg_time_s = (double)total_time / runs / CLOCKS_PER_SEC;
     std::cout << "Среднее время выполнения: " << std::fixed << std::setprecision(8) << avg_time_ms << " с\n";
 
     return 0;
