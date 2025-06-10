@@ -31,6 +31,9 @@ int main(int argc, char* argv[]) {
     int runs = std::atoi(argv[1]);
     int size = std::atoi(argv[2]);
     int threads_per_block = std::atoi(argv[3]);
+
+    std::srand(std::time(nullptr));  // инициализация генератора случайных чисел
+
     long long total_time = 0;
 
     for (int r = 0; r < runs; ++r) {
@@ -49,7 +52,7 @@ int main(int argc, char* argv[]) {
         clock_t start = clock();
 
         sum_reduction<<<blocks, threads_per_block, threads_per_block * sizeof(int)>>>(d_array, d_partial_sums, size);
-        cudaDeviceSynchronize(); // важно: дождаться завершения ядра
+        cudaDeviceSynchronize();
 
         long long* h_partial_sums = new long long[blocks];
         cudaMemcpy(h_partial_sums, d_partial_sums, blocks * sizeof(long long), cudaMemcpyDeviceToHost);
