@@ -1,4 +1,3 @@
-// seq_operations.cpp
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -28,28 +27,41 @@ int main(int argc, char* argv[]) {
     int* prod = new int[size];
     float* div = new float[size];
 
-    double total_time = 0.0;
+    double total_time_add = 0.0;
+    double total_time_sub = 0.0;
+    double total_time_mul = 0.0;
+    double total_time_div = 0.0;
 
     for (int r = 0; r < runs; ++r) {
         generateArray(A, size);
         generateArray(B, size);
 
         clock_t start = clock();
-        for (int i = 0; i < size; ++i) {
-            sum[i] = A[i] + B[i];
-            diff[i] = A[i] - B[i];
-            prod[i] = A[i] * B[i];
-            div[i] = (float)A[i] / B[i];
-        }
+        for (int i = 0; i < size; ++i) sum[i] = A[i] + B[i];
         clock_t end = clock();
+        total_time_add += double(end - start) / CLOCKS_PER_SEC;
 
-        double time_taken = double(end - start) / CLOCKS_PER_SEC;
-        total_time += time_taken;
+        start = clock();
+        for (int i = 0; i < size; ++i) diff[i] = A[i] - B[i];
+        end = clock();
+        total_time_sub += double(end - start) / CLOCKS_PER_SEC;
 
-        cout << "Запуск " << r + 1 << ": Время выполнения = " << time_taken << " секунд\n";
+        start = clock();
+        for (int i = 0; i < size; ++i) prod[i] = A[i] * B[i];
+        end = clock();
+        total_time_mul += double(end - start) / CLOCKS_PER_SEC;
+
+        start = clock();
+        for (int i = 0; i < size; ++i) div[i] = (float)A[i] / B[i];
+        end = clock();
+        total_time_div += double(end - start) / CLOCKS_PER_SEC;
     }
 
-    cout << "Среднее время выполнения последовательной версии: " << total_time / runs << " секунд\n";
+    cout << "\nСреднее время за " << runs << " запусков:\n";
+    cout << "Сложение:      " << total_time_add / runs << " секунд\n";
+    cout << "Вычитание:     " << total_time_sub / runs << " секунд\n";
+    cout << "Умножение:     " << total_time_mul / runs << " секунд\n";
+    cout << "Деление:       " << total_time_div / runs << " секунд\n";
 
     delete[] A;
     delete[] B;
