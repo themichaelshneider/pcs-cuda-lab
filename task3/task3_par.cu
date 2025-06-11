@@ -107,5 +107,8 @@ int main(int argc, char** argv) {
     cudaFree(d_res);
     cudaFree(d_fres);
 
+    double avg_time_s = (double)total / runs / CLOCKS_PER_SEC;
+    std::cout << "Среднее время параллельной Bitonic сортировки: " << std::fixed << std::setprecision(8) << avg_time_s << " с\n";
+
     return 0;
 }
