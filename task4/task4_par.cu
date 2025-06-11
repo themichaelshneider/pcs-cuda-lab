@@ -97,10 +97,10 @@ int main(int argc, char* argv[]) {
     }
 
     cout << "\nСреднее время выполнения операций за " << runs << " запусков:\n";
-    cout << "Сложение (CUDA):   " << t_add / runs << " секунд\n";
-    cout << "Вычитание (CUDA):  " << t_sub / runs << " секунд\n";
-    cout << "Умножение (CUDA):  " << t_mul / runs << " секунд\n";
-    cout << "Деление (CUDA):    " << t_div / runs << " секунд\n";
+    cout << "Сложение (CUDA):   " << std::fixed << std::setprecision(8)  << t_add / runs << " секунд\n";
+    cout << "Вычитание (CUDA):  " << std::fixed << std::setprecision(8)  << t_sub / runs << " секунд\n";
+    cout << "Умножение (CUDA):  " << std::fixed << std::setprecision(8)  << t_mul / runs << " секунд\n";
+    cout << "Деление (CUDA):    " << std::fixed << std::setprecision(8) << t_div / runs << " секунд\n";
 
     delete[] h_A;
     delete[] h_B;
