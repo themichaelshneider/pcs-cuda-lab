@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cuda_runtime.h>
+#include <iomanip>
 
 using namespace std;
 
