@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cuda_runtime.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -92,10 +93,10 @@ int main(int argc, char** argv) {
     }
 
     cout << "\nСреднее время за " << runs << " запусков:\n";
-    cout << "Сложение (CUDA):      " << total_add / runs << " секунд\n";
-    cout << "Вычитание (CUDA):     " << total_sub / runs << " секунд\n";
-    cout << "Умножение (CUDA):     " << total_mul / runs << " секунд\n";
-    cout << "Деление (CUDA):       " << total_div / runs << " секунд\n";
+    cout << "Сложение (CUDA):      " << std::fixed << std::setprecision(8) << total_add / runs << " секунд\n";
+    cout << "Вычитание (CUDA):     " << std::fixed << std::setprecision(8) << total_sub / runs << " секунд\n";
+    cout << "Умножение (CUDA):     " << std::fixed << std::setprecision(8) << total_mul / runs << " секунд\n";
+    cout << "Деление (CUDA):       " << std::fixed << std::setprecision(8) << total_div / runs << " секунд\n";
 
     delete[] h_A;
     delete[] h_B;
@@ -107,8 +108,6 @@ int main(int argc, char** argv) {
     cudaFree(d_res);
     cudaFree(d_fres);
 
-    double avg_time_s = (double)total / runs / CLOCKS_PER_SEC;
-    std::cout << "Среднее время параллельной Bitonic сортировки: " << std::fixed << std::setprecision(8) << avg_time_s << " с\n";
 
     return 0;
 }
